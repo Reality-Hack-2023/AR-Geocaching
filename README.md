@@ -2,4 +2,7 @@
 
 ## Team Members:
 - Stuart Aldrich
-- 
+- Thomas Manoka
+- Andrew Li
+- Kai Zhang
+- Erika Zhou
