@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sngty;
 using TMPro;
+using UnityEngine.UI;
 
 public class ExampleCommunicatorScript : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ExampleCommunicatorScript : MonoBehaviour
     public SingularityManager mySingularityManager;
 
     public TextMeshProUGUI displayText;
+    public GameObject hotColdImage;
+    public Slider progressBar;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class ExampleCommunicatorScript : MonoBehaviour
     {
         Debug.Log("Connected to device!");
         displayText.text = "Connected to device!";
+        hotColdImage.SetActive(true);
     }
 
     public void onMessageRecieved(string message)
@@ -65,7 +69,17 @@ public class ExampleCommunicatorScript : MonoBehaviour
 
         if(message.StartsWith("rssi: "))
         {
-            UpdateDisplayText(message);
+            string progress_text = "";
+            for(int i = 0; i < message.Length; ++i)
+            {
+                if(i >= 6)
+                {
+                    progress_text += message[i];
+                }
+            }
+            UpdateDisplayText(progress_text);
+            int progress = int.Parse(progress_text);
+            progressBar.value = -progress;
         }
     }
 
