@@ -23,7 +23,7 @@ public class ExampleCommunicatorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        displayText.text = "PLACEHOLDER";
+        displayText.text = "0";
 
         List<DeviceSignature> pairedDevices = mySingularityManager.GetPairedDevices();
         DeviceSignature myDevice;
