@@ -1,3 +1,8 @@
+/* References: */
+// "How to use esp_bt_gap_read_rssi_delta function to get bluetooth classic RSSI from ESP32?" - Stack Overflow
+//   https://stackoverflow.com/questions/52572703/how-to-use-esp-bt-gap-read-rssi-delta-function-to-get-bluetooth-classic-rssi-fro
+
+
 #include "esp_gap_bt_api.h"
 #include "BluetoothSerial.h"
 
