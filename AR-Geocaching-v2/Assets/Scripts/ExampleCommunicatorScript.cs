@@ -20,6 +20,8 @@ public class ExampleCommunicatorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        displayText.text = "PLACEHOLDER";
+
         List<DeviceSignature> pairedDevices = mySingularityManager.GetPairedDevices();
         DeviceSignature myDevice;
         myDevice.name = "placeholder";
@@ -58,8 +60,13 @@ public class ExampleCommunicatorScript : MonoBehaviour
 
     public void onMessageRecieved(string message)
     {
-        Debug.Log("Message recieved from device: " + message);
-        UpdateDisplayText(message);
+        //Debug.Log("Message recieved from device: " + message);
+        //UpdateDisplayText(textToShow);
+
+        if(message.StartsWith("rssi: "))
+        {
+            UpdateDisplayText(message);
+        }
     }
 
     public void onError(string errorMessage)
