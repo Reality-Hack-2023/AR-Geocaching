@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BluetoothUIManager : MonoBehaviour
@@ -24,6 +25,13 @@ public class BluetoothUIManager : MonoBehaviour
 
     List<string> activeMessages = new List<string>();
     public int maxMessages = 7;
+
+    // toggle to show/hide console
+    public bool showConsole = true;
+    public GameObject console;
+
+    public TextMeshProUGUI consoleTitle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +59,8 @@ public class BluetoothUIManager : MonoBehaviour
 
     public void onConnectButton()
     {
+        consoleTitle.text = "connecting...";
+
         state = uistate.Connecting;
         thisDevice = devices[dropdown.value];
         singularity.ConnectToDevice(thisDevice);
@@ -87,6 +97,13 @@ public class BluetoothUIManager : MonoBehaviour
             connectingPanel.SetActive(false);
             connectPanel.SetActive(false);
             consolePanel.SetActive(true);
+
+            // hide console after connecting
+            if (state == uistate.Connected)
+            {
+                showConsole = false;
+                console.SetActive(false);
+            }
         }
         else if (state == uistate.Disconnected)
         {
