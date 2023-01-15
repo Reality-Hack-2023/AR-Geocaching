@@ -17,6 +17,7 @@ public class SonarAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myAudioSource.volume = 1 - ((progressBar.value)/50);
+        myAudioSource.volume = 1 - ((progressBar.value)/50) + 0.3f;
+        myAudioSource.pitch = 2 - ((progressBar.value) / 50); // fast pitch as get closer
     }
 }
